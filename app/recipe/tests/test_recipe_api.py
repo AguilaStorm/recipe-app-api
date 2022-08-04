@@ -2,9 +2,6 @@
 Test for recipe API.
 """
 from decimal import Decimal
-from gzip import READ
-import re
-
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -34,6 +31,7 @@ def create_recipe(user, **params):
     recipe = Recipe.objects.create(user=user, **defaults)
     return recipe
 
+
 class PublicRecipeAPITest(TestCase):
     """Test unauthenticated API requests."""
 
@@ -45,6 +43,7 @@ class PublicRecipeAPITest(TestCase):
         res = self.client.get(RECIPES_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class PrivateRecipeApiTest(TestCase):
     """Test authenticated API requests."""
