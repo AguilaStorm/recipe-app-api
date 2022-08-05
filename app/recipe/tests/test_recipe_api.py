@@ -5,7 +5,6 @@ from decimal import Decimal
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from app.recipe import serializers
 
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -20,9 +19,11 @@ from recipe.serializers import (
 
 RECIPES_URL = reverse('recipe:recipe-list')
 
+
 def detail_url(recipe_id):
     """Create and return a recipe detail URL."""
-    return reverse('recipe:recipe-detail', arg=[recipe_id])
+    return reverse('recipe:recipe-detail', args=[recipe_id])
+
 
 def create_recipe(user, **params):
     """Create and return a sample recipe."""
